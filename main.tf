@@ -100,6 +100,8 @@ resource "aws_instance" "default" {
 
   subnet_id = var.subnets[0]
 
+  monitoring = var.monitoring
+
   tags = module.label.tags
 
   metadata_options {

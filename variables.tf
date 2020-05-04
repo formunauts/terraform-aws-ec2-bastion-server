@@ -71,6 +71,12 @@ variable "user_data" {
   description = "User data content"
 }
 
+variable "monitoring" {
+  type        = bool
+  default     = false
+  description = "If true, the launched EC2 instance will have detailed monitoring enabled."
+}
+
 variable "key_name" {
   type        = string
   default     = ""
