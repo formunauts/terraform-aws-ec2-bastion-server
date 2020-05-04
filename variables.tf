@@ -65,6 +65,11 @@ variable "user_data" {
   description = "User data content"
 }
 
+variable "monitoring" {
+  type        = "string"
+  default     = "false"
+}
+
 variable "key_name" {
   type        = "string"
   default     = ""

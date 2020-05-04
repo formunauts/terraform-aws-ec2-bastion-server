@@ -99,6 +99,7 @@ resource "aws_instance" "default" {
   associate_public_ip_address = "true"
 
   key_name = "${var.key_name}"
+  monitoring = "${var.monitoring}"
 
   subnet_id = "${var.subnets[0]}"
 
