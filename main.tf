@@ -73,23 +73,12 @@ data "aws_route53_zone" "domain" {
   zone_id = "${var.zone_id}"
 }
 
-data "template_file" "user_data" {
-  template = "${file("${path.module}/user_data.sh")}"
-
-  vars {
-    user_data       = "${join("\n", var.user_data)}"
-    welcome_message = "${var.stage}"
-    hostname        = "${var.name}.${join("",data.aws_route53_zone.domain.*.name)}"
-    search_domains  = "${join("",data.aws_route53_zone.domain.*.name)}"
-    ssh_user        = "${var.ssh_user}"
-  }
-}
 
 resource "aws_instance" "default" {
   ami           = "${var.ami}"
   instance_type = "${var.instance_type}"
 
-  user_data = "${data.template_file.user_data.rendered}"
+  user_data = "${file("user_data.sh")}"
 
   vpc_security_group_ids = [
     "${compact(concat(list(aws_security_group.default.id), var.security_groups))}",
