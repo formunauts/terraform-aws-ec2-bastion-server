@@ -96,6 +96,8 @@ resource "aws_instance" "default" {
   subnet_id = "${var.subnets[0]}"
 
   tags = "${module.label.tags}"
+  disable_api_termination  = "${var.disable_api_termination}"
+  ebs_optimized = "${var.ebs_optimized}"
 }
 
 module "dns" {

@@ -86,6 +86,17 @@ variable "ssh_user" {
   description = "Default SSH user for this AMI. e.g. `ec2user` for Amazon Linux and `ubuntu` for Ubuntu systems"
 }
 
+variable "disable_api_termination" {
+  type = "string"
+  default = "false" 
+}
+
+variable "ebs_optimized" {
+  type = "string"
+  default = "false"
+}
+
+
 variable "security_groups" {
   type        = "list"
   description = "AWS security group IDs"
