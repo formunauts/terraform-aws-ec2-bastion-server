@@ -100,7 +100,9 @@ resource "aws_instance" "default" {
 
   subnet_id = var.subnets[0]
 
-  monitoring = var.monitoring
+  monitoring              = var.monitoring
+  ebs_optimized           = var.ebs_optimized
+  disable_api_termination = var.disable_api_termination
 
   tags = module.label.tags
 

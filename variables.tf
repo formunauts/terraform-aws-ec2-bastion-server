@@ -77,6 +77,18 @@ variable "monitoring" {
   description = "If true, the launched EC2 instance will have detailed monitoring enabled."
 }
 
+variable "disable_api_termination" {
+  type        = bool
+  default     = false
+  description = "If true, enables EC2 Instance Termination Protection."
+}
+
+variable "ebs_optimized" {
+  type        = bool
+  default     = false
+  description = "If true, the launched EC2 instance will be EBS-optimized."
+}
+
 variable "key_name" {
   type        = string
   default     = ""
