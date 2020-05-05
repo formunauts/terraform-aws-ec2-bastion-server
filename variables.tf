@@ -76,6 +76,11 @@ variable "key_name" {
   description = "Key name"
 }
 
+variable "sg_description" {
+  type        = "string"
+  default     = ""
+}
+
 variable "ssh_user" {
   type        = "string"
   description = "Default SSH user for this AMI. e.g. `ec2user` for Amazon Linux and `ubuntu` for Ubuntu systems"

@@ -2,6 +2,9 @@ terraform {
   backend "s3" {}
 }
 
+locals {
+  sg_default_description = "Bastion security group (only SSH inbound access is allowed)"
+}
 module "label" {
   source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.3.3"
   namespace  = "${var.namespace}"
@@ -44,7 +47,7 @@ data "aws_iam_policy_document" "default" {
 resource "aws_security_group" "default" {
   name        = "${module.label.id}"
   vpc_id      = "${var.vpc_id}"
-  description = "Bastion security group (only SSH inbound access is allowed)"
+  description = "${length(var.sg_description) > 0 ? var.sg_description : local.sg_default_description}"
 
   tags = "${module.label.tags}"
 
